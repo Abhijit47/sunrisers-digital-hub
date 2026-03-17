@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const HomeThreeServices = () => {
   return (
-    <section className='section service-f fade-wrapper '>
+    <section id='why-choose-us' className='section service-f fade-wrapper '>
       <div className='container'>
         <div className='row'>
           <div className='col-12'>
@@ -20,7 +20,9 @@ const HomeThreeServices = () => {
                 </div>
                 <div className='col-12 col-lg-4'>
                   <div className='text-center text-lg-end'>
-                    <Link href='#' className='btn btn--primary text-capitalize'>
+                    <Link
+                      href='#services'
+                      className='btn btn--primary text-capitalize'>
                       view all service
                     </Link>
                   </div>

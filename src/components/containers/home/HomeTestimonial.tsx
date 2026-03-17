@@ -1,23 +1,23 @@
 'use client';
 
+import { testimonials } from '@/constants';
 import Link from 'next/link';
-import { useState } from 'react';
+// import { useState } from 'react';
+// import type SwiperType from 'swiper';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
-// import sthumbthree from '../../../../public/images/testimonial/s-thumb-three.png';
-// import sthumbtwo from '../../../../public/images/testimonial/s-thumb-two.png';
-// import sthumb from '../../../../public/images/testimonial/s-thumb.png';
 
 const isDev = process.env.NODE_ENV === 'development';
 
 const HomeTestimonial = () => {
-  const [nextSlideIndex, setNextSlideIndex] = useState<number>(1);
+  // const [nextSlideIndex, setNextSlideIndex] = useState<number>(1);
 
-  const handleSlideChange = (swiper: any) => {
-    const nextIndex = (swiper.realIndex + 1) % swiper.slides.length;
-    setNextSlideIndex(nextIndex);
-  };
+  // const handleSlideChange = (swiper: SwiperType) => {
+  //   const nextIndex = (swiper.realIndex + 1) % swiper.slides.length;
+  //   // setNextSlideIndex(nextIndex);
+  // };
+
   return (
     <section className='section testimonial pt-0 position-relative'>
       <div className='testimonial__text-slider-w'>
@@ -39,76 +39,18 @@ const HomeTestimonial = () => {
                 }
           }
           className='testimonial__text-slider'>
-          <SwiperSlide>
-            <div className='testimonial__text-slider-single'>
-              <h2 className='h1'>
-                <Link href='client-feedback'>
-                  client&apos;s testimonial
-                  <i className='fa-sharp fa-solid fa-arrow-down-right'></i>
-                </Link>
-              </h2>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className='testimonial__text-slider-single'>
-              <h2 className='h1'>
-                <Link href='client-feedback'>
-                  client&apos;s testimonial
-                  <i className='fa-sharp fa-solid fa-arrow-down-right'></i>
-                </Link>
-              </h2>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className='testimonial__text-slider-single'>
-              <h2 className='h1'>
-                <Link href='client-feedback'>
-                  client&apos;s testimonial
-                  <i className='fa-sharp fa-solid fa-arrow-down-right'></i>
-                </Link>
-              </h2>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className='testimonial__text-slider-single'>
-              <h2 className='h1'>
-                <Link href='client-feedback'>
-                  client&apos;s testimonial
-                  <i className='fa-sharp fa-solid fa-arrow-down-right'></i>
-                </Link>
-              </h2>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className='testimonial__text-slider-single'>
-              <h2 className='h1'>
-                <Link href='client-feedback'>
-                  client&apos;s testimonial
-                  <i className='fa-sharp fa-solid fa-arrow-down-right'></i>
-                </Link>
-              </h2>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className='testimonial__text-slider-single'>
-              <h2 className='h1'>
-                <Link href='client-feedback'>
-                  client&apos;s testimonial
-                  <i className='fa-sharp fa-solid fa-arrow-down-right'></i>
-                </Link>
-              </h2>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className='testimonial__text-slider-single'>
-              <h2 className='h1'>
-                <Link href='client-feedback'>
-                  client&apos;s testimonial
-                  <i className='fa-sharp fa-solid fa-arrow-down-right'></i>
-                </Link>
-              </h2>
-            </div>
-          </SwiperSlide>
+          {Array.from({ length: 7 }).map(() => (
+            <SwiperSlide key={crypto.randomUUID()}>
+              <div className='testimonial__text-slider-single'>
+                <h2 className='h1'>
+                  <Link href='#'>
+                    client&apos;s testimonial
+                    <i className='fa-sharp fa-solid fa-arrow-down-right'></i>
+                  </Link>
+                </h2>
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
       <div className='container position-relative'>
@@ -138,139 +80,46 @@ const HomeTestimonial = () => {
                   nextEl: '.next-testimonial-three',
                   prevEl: '.prev-testimonial-three',
                 }}
-                onSlideChange={(swiper) => handleSlideChange(swiper)}
+                // onSlideChange={(swiper) => handleSlideChange(swiper)}
                 className='testimonial-s__slider'>
-                <SwiperSlide>
-                  <div className='testimonial-s__slider-single'>
-                    <div className='row gaper align-items-center'>
-                      <div className='col-12 col-lg-auto'>
-                        <div className='thumb'>
-                          {/* <Image src={sthumbthree} alt='Image' /> */}
-                          <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            width='44'
-                            height='322'
-                            viewBox='0 0 44 322'
-                            fill='none'
-                            className='d-none d-lg-block'>
-                            <path
-                              d='M43 -0.000976562V151.999L2 192.999H43V321.999'
-                              stroke='#414141'
-                            />
-                          </svg>
+                {testimonials.map((testimonial) => (
+                  <SwiperSlide key={testimonial.id}>
+                    <div className='testimonial-s__slider-single'>
+                      <div className='row gaper align-items-center'>
+                        <div className='col-12 col-lg-auto'>
+                          <div className='thumb'>
+                            <svg
+                              xmlns='http://www.w3.org/2000/svg'
+                              width='44'
+                              height='322'
+                              viewBox='0 0 44 322'
+                              fill='none'
+                              className='d-none d-lg-block'>
+                              <path
+                                d='M43 -0.000976562V151.999L2 192.999H43V321.999'
+                                stroke='#414141'
+                              />
+                            </svg>
+                          </div>
                         </div>
-                      </div>
-                      <div className='col-12 col-lg-10 offset-lg-1 col-xxl-10 offset-xxl-1'>
-                        <div className='testimonial-s__content'>
-                          <div className='quote'>
-                            <i className='fa-solid fa-quote-right'></i>
-                          </div>
-                          <div className='content'>
-                            <h4>
-                              posuere luctus orci. Donec vitae mattis quam,
-                              vitae tempor arcu. Aenean non odio porttitor,
-                              convallis erat sit amet, facilisis velit. Nulla
-                              ornare convallis malesuada. Phasellus molestie,
-                              ipsum ac fringilla.
-                            </h4>
-                          </div>
-                          <div className='content-cta'>
-                            <h5>Daniel Smith</h5>
-                            <p>Senior engineer</p>
+                        <div className='col-12 col-lg-10 offset-lg-1 col-xxl-10 offset-xxl-1'>
+                          <div className='testimonial-s__content'>
+                            <div className='quote'>
+                              <i className='fa-solid fa-quote-right'></i>
+                            </div>
+                            <div className='content'>
+                              <h4>{testimonial.comment}</h4>
+                            </div>
+                            <div className='content-cta'>
+                              <h5>{testimonial.name}</h5>
+                              <p>{testimonial.position}</p>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className='testimonial-s__slider-single'>
-                    <div className='row gaper align-items-center'>
-                      <div className='col-12 col-lg-auto'>
-                        <div className='thumb'>
-                          {/* <Image src={sthumbthree} alt='Image' /> */}
-                          <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            width='44'
-                            height='322'
-                            viewBox='0 0 44 322'
-                            fill='none'
-                            className='d-none d-lg-block'>
-                            <path
-                              d='M43 -0.000976562V151.999L2 192.999H43V321.999'
-                              stroke='#414141'
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                      <div className='col-12 col-lg-10 offset-lg-1 col-xxl-10 offset-xxl-1'>
-                        <div className='testimonial-s__content'>
-                          <div className='quote'>
-                            <i className='fa-solid fa-quote-right'></i>
-                          </div>
-                          <div className='content'>
-                            <h4>
-                              posuere luctus orci. Donec vitae mattis quam,
-                              vitae tempor arcu. Aenean non odio porttitor,
-                              convallis erat sit amet, facilisis velit. Nulla
-                              ornare convallis malesuada. Phasellus molestie,
-                              ipsum ac fringilla.
-                            </h4>
-                          </div>
-                          <div className='content-cta'>
-                            <h5>Daniel Smith</h5>
-                            <p>Senior engineer</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className='testimonial-s__slider-single'>
-                    <div className='row gaper align-items-center'>
-                      <div className='col-12 col-lg-auto'>
-                        <div className='thumb'>
-                          {/* <Image src={sthumbthree} alt='Image' /> */}
-                          <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            width='44'
-                            height='322'
-                            viewBox='0 0 44 322'
-                            fill='none'
-                            className='d-none d-lg-block'>
-                            <path
-                              d='M43 -0.000976562V151.999L2 192.999H43V321.999'
-                              stroke='#414141'
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                      <div className='col-12 col-lg-10 offset-lg-1 col-xxl-10 offset-xxl-1'>
-                        <div className='testimonial-s__content'>
-                          <div className='quote'>
-                            <i className='fa-solid fa-quote-right'></i>
-                          </div>
-                          <div className='content'>
-                            <h4>
-                              posuere luctus orci. Donec vitae mattis quam,
-                              vitae tempor arcu. Aenean non odio porttitor,
-                              convallis erat sit amet, facilisis velit. Nulla
-                              ornare convallis malesuada. Phasellus molestie,
-                              ipsum ac fringilla.
-                            </h4>
-                          </div>
-                          <div className='content-cta'>
-                            <h5>Daniel Smith</h5>
-                            <p>Senior engineer</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
           </div>

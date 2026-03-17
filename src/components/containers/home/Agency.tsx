@@ -81,9 +81,10 @@ const Agency = () => {
           <div className='col-12 col-lg-6'>
             <div className='agency__thumb'>
               <Image
-                src={
-                  'https://xpovio-ltr-nine.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fthumb-one.1ae45dc2.png&w=1080&q=75'
-                }
+                // src={
+                //   'https://xpovio-ltr-nine.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fthumb-one.1ae45dc2.png&w=1080&q=75'
+                // }
+                src={'/images/about-us.jpeg'}
                 alt='Image'
                 className='thumb-one fade-left'
                 priority
@@ -91,14 +92,16 @@ const Agency = () => {
                 height={1080}
               />
               <Image
-                src={
-                  'https://xpovio-ltr-nine.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fthumb-two.96191b11.png&w=1080&q=75'
-                }
+                // src={
+                //   'https://xpovio-ltr-nine.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fthumb-two.96191b11.png&w=1080&q=75'
+                // }
+                // src={'/images/about-us.jpeg'}
+                src={'/logo.png'}
                 alt='Image'
                 className='thumb-two fade-right'
                 priority
-                width={1080}
-                height={1080}
+                width={800}
+                height={800}
               />
             </div>
           </div>
@@ -169,7 +172,7 @@ const Agency = () => {
                 </div>
               </div>
               <div className='section__content-cta'>
-                <Link href='#' className='btn btn--primary'>
+                <Link href='#why-choose-us' className='btn btn--primary'>
                   Know More
                 </Link>
               </div>

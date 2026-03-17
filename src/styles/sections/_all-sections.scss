@@ -1,4 +1,4 @@
-@use "../abstracts/mixins";
+@use '../abstracts/mixins';
 
 /* ==== 
  --------- (5.0) all sections styles start ---------
@@ -16,24 +16,24 @@
     text-align: end;
     z-index: 1;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0px;
       right: 10%;
       width: 40px;
       height: 40px;
-      background-image: url("../../../public/images/agency/dot.png");
+      background-image: url('../../../public/images/agency/dot.png');
       background-size: cover;
       z-index: -1;
     }
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: 0px;
       left: 0px;
       width: 40px;
       height: 40px;
-      background-image: url("../../../public/images/agency/dot.png");
+      background-image: url('../../../public/images/agency/dot.png');
       background-size: cover;
       z-index: -1;
     }
@@ -235,7 +235,7 @@
     z-index: 1;
     overflow: hidden;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       left: 20px;
       bottom: 20px;
@@ -245,7 +245,7 @@
       background-color: var(--primary-color);
     }
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       right: 20px;
       bottom: 20px;
@@ -620,7 +620,9 @@
       background-repeat: no-repeat;
       background-position-x: 75%;
       opacity: 0;
-      transition: opacity 0.3s, transform 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+      transition:
+        opacity 0.3s,
+        transform 0.7s cubic-bezier(0.23, 1, 0.32, 1),
         -webkit-transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
       margin: -200px 0 0 -150px;
       overflow: hidden;
@@ -727,7 +729,9 @@
       background-repeat: no-repeat;
       background-position-x: 75%;
       opacity: 0;
-      transition: opacity 0.3s, transform 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+      transition:
+        opacity 0.3s,
+        transform 0.7s cubic-bezier(0.23, 1, 0.32, 1),
         -webkit-transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
       margin: -120px 0 0 -120px;
       overflow: hidden;
@@ -880,8 +884,8 @@
 
 // 5.10 testimonial two styles
 .testimonial-two {
-  background: url("../../../public/images/testimonial/line.png"),
-    var(--tertiary-color);
+  background:
+    url('../../../public/images/testimonial/line.png'), var(--tertiary-color);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: left bottom;
@@ -988,7 +992,7 @@
     z-index: 1;
     overflow: hidden;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       inset: 0px;
       width: 100%;
@@ -1200,7 +1204,7 @@
 .liner {
   position: relative;
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0px;
     right: 0px;
@@ -1237,7 +1241,7 @@
     margin-top: 40px;
     position: relative;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 50px;
       left: 0px;
@@ -1251,7 +1255,7 @@
   .single {
     position: relative;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 50px;
       left: 0px;
@@ -1463,8 +1467,8 @@
     .toggle-service-f {
       position: relative;
       &::before {
-        content: "\2b";
-        font-family: "Font Awesome 6 Pro";
+        content: '\2b';
+        font-family: 'Font Awesome 6 Pro';
         position: absolute;
         top: 50%;
         left: 50%;
@@ -1481,8 +1485,8 @@
   .service-f-single-active {
     .toggle-service-f {
       &::before {
-        content: "\f068";
-        font-family: "Font Awesome 6 Pro";
+        content: '\f068';
+        font-family: 'Font Awesome 6 Pro';
         color: var(--primary-color);
         font-size: 18px;
       }
@@ -1602,7 +1606,7 @@
       transition: var(--transition);
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         inset: 0px;
         width: 0%;
@@ -1628,7 +1632,7 @@
       line-height: 1.4;
       transition: var(--transition);
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         top: calc(100% + 30px);
         left: 50%;
@@ -1650,7 +1654,9 @@
       background-repeat: no-repeat;
       background-position-x: 75%;
       opacity: 0;
-      transition: opacity 0.3s, transform 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+      transition:
+        opacity 0.3s,
+        transform 0.7s cubic-bezier(0.23, 1, 0.32, 1),
         -webkit-transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
       margin: 60px 0 0 -150px;
       overflow: hidden;
@@ -2144,7 +2150,7 @@
     z-index: 1;
     padding: 3px 3px 0px 3px;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       inset: 0px;
       width: 100%;
@@ -2267,7 +2273,7 @@
       padding-left: 40px;
       margin-bottom: 0px;
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -2339,8 +2345,8 @@
     .toggle-service-f {
       position: relative;
       &::before {
-        content: "\2b";
-        font-family: "Font Awesome 6 Pro";
+        content: '\2b';
+        font-family: 'Font Awesome 6 Pro';
         position: absolute;
         top: 50%;
         right: 0px;
@@ -2357,8 +2363,8 @@
   .service-f-single-active {
     .toggle-service-f {
       &::before {
-        content: "\f068";
-        font-family: "Font Awesome 6 Pro";
+        content: '\f068';
+        font-family: 'Font Awesome 6 Pro';
         color: var(--primary-color);
         font-size: 18px;
       }
@@ -2529,7 +2535,7 @@
       position: relative;
       padding-left: 20px;
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 50%;
         left: 0px;
@@ -2640,7 +2646,7 @@
         position: relative;
         z-index: 2;
         &::before {
-          content: "";
+          content: '';
           position: absolute;
           top: 50%;
           left: 50%;
@@ -2654,7 +2660,7 @@
           animation: wave 3s linear infinite;
         }
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           top: 50%;
           left: 50%;
@@ -3608,8 +3614,8 @@
 
         &::after {
           color: var(--primary-color);
-          content: "\f068";
-          font-family: "Font Awesome 6 Pro";
+          content: '\f068';
+          font-family: 'Font Awesome 6 Pro';
           transform: rotate(0deg);
         }
       }
@@ -3623,8 +3629,8 @@
         background-color: transparent;
 
         &::after {
-          content: "\2b";
-          font-family: "Font Awesome 6 Pro";
+          content: '\2b';
+          font-family: 'Font Awesome 6 Pro';
           font-weight: 900;
           background-image: none;
           font-size: 16px;
@@ -3677,7 +3683,7 @@
 // 5.41 contact
 .contact-m {
   .contact-m__single {
-    padding: 40px 65px;
+    padding: 40px 45px;
     background-color: #1a1a1a;
     text-align: center;
     height: 100%;
@@ -3881,8 +3887,8 @@ select {
 .drt {
   position: relative;
   &::after {
-    content: "\f107";
-    font-family: "Font Awesome 6 Pro";
+    content: '\f107';
+    font-family: 'Font Awesome 6 Pro';
     font-weight: 900;
     color: white;
     font-size: 20px;

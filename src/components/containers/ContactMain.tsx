@@ -13,7 +13,7 @@ import ContactForm from '../contact-form';
 
 const ContactMain = () => {
   return (
-    <section id='contact' className='section pb-0 contact-m fade-wrapper'>
+    <section id='contact' className='section pt-0 pb-0 contact-m fade-wrapper'>
       <div className='container'>
         <div className='row gaper'>
           <div className='col-12 col-sm-6 col-xl-3'>
