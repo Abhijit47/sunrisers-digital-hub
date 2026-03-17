@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   title: 'Sunrisers Digital Hub',
   description: 'Digital Agency Creative Portfolio Template',
   keywords: ['creative', 'agency', 'portfolio'],
+  other: {
+    'google-site-verification': 'B7v3HqDgdLTGugh821Fw-FbeYLEt2qCbL2NJ5idOjwI',
+  },
 };
 
 export default function RootLayout({
