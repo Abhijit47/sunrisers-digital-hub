@@ -63,6 +63,28 @@ export const metadata: Metadata = {
       'facebook-domain-verification': 'brx2ml82v2mfauvs2hrlr3aogdcwtl',
     },
   },
+  openGraph: {
+    type: 'website',
+    determiner: 'the',
+    title: 'Sunrisers Digital Hub - Your Partner in Building Powerful Brands',
+    description:
+      'Sunrisers Digital Hub is a full-service branding and digital marketing agency specializing in brand strategy, identity design, SEO, social media, and performance marketing to help businesses build powerful brands and achieve measurable growth.',
+    emails: ['sunrisersdigitalhub@gmail.com'],
+    phoneNumbers: ['+919845732329', '+919739932329'],
+    siteName: 'Sunrisers Digital Hub',
+    locale: 'en_IN',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Sunrisers Digital Hub - Building Powerful Brands',
+      },
+    ],
+    url: BASE_URL,
+    countryName: 'India',
+    ttl: 60 * 60 * 24, // 1 day in seconds
+  },
   icons: {
     icon: '/logo.png',
     apple: '/logo.png',

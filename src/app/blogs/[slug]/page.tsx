@@ -51,7 +51,21 @@ export async function generateMetadata(
     metadataBase: new URL(BASE_URL),
     openGraph: {
       type: 'article',
-      images: [blog.cover],
+      title: blog.title,
+      description: blog.description,
+      emails: parentContent.openGraph?.emails,
+      phoneNumbers: parentContent.openGraph?.phoneNumbers,
+      siteName: parentContent.openGraph?.siteName,
+      locale: parentContent.openGraph?.locale,
+      countryName: parentContent.openGraph?.countryName,
+      images: [
+        {
+          url: blog.cover,
+          width: 1200,
+          height: 630,
+          alt: 'Sunrisers Digital Hub - Building Powerful Brands',
+        },
+      ],
       publishedTime: blog
         ? new Date(blog.lastModified).toISOString()
         : undefined,
