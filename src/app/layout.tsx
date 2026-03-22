@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // main scss
 import '@/styles/main.scss';
 
+import Layout from '@/components/layout/Layout';
 import { LazyWhatsappButton } from '@/components/whatsapp-button';
 import './globals.css';
 
@@ -22,11 +23,59 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Sunrisers Digital Hub',
-  description: 'Digital Agency Creative Portfolio Template',
-  keywords: ['creative', 'agency', 'portfolio'],
-  other: {
-    'google-site-verification': 'B7v3HqDgdLTGugh821Fw-FbeYLEt2qCbL2NJ5idOjwI',
+  description:
+    'Sunrisers Digital Hub is a full-service branding and digital marketing agency specializing in brand strategy, identity design, SEO, social media, and performance marketing to help businesses build powerful brands and achieve measurable growth.',
+  keywords: [
+    'sunrisers digital hub',
+    'branding and digital marketing agency',
+    'brand strategy services',
+    'brand identity design',
+    'corporate branding solutions',
+    'digital branding experts',
+    'seo services india',
+    'performance marketing agency',
+    'social media marketing',
+    'paid advertising services',
+    'google ads specialists',
+    'meta ads experts',
+    'website design and development',
+    'creative branding agency bangalore',
+    'lead generation services',
+    'online reputation management',
+    'content marketing strategy',
+    'business growth solutions',
+    'roi driven marketing',
+  ],
+  applicationName: 'Sunrisers Digital Hub',
+  generator: 'Next.js',
+  referrer: 'same-origin',
+  creator: "Leanitech's Team",
+  publisher: 'Vercel',
+  // other: {
+  //   'google-site-verification': 'B7v3HqDgdLTGugh821Fw-FbeYLEt2qCbL2NJ5idOjwI',
+  // },
+  verification: {
+    google: 'B7v3HqDgdLTGugh821Fw-FbeYLEt2qCbL2NJ5idOjwI',
+    other: {
+      'facebook-domain-verification': 'brx2ml82v2mfauvs2hrlr3aogdcwtl',
+    },
   },
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
+  category: 'technology',
+  classification: 'business',
+  authors: [
+    {
+      url: 'https://abhijitdev.tech',
+      name: 'Abhijit K.',
+    },
+    {
+      url: 'https://leanitech.com',
+      name: 'Shobana R.',
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -37,7 +86,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <Layout header={2} footer={2} video={false}>
+          {children}
+        </Layout>
         <LazyWhatsappButton />
       </body>
     </html>

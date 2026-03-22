@@ -1,28 +1,31 @@
-import React from "react";
-import Link from "next/link";
+import { allBlogs } from 'content-collections';
+import Link from 'next/link';
 
-const BlogSingleBanner = () => {
+const BlogSingleBanner = ({ slug }: { slug: string }) => {
+  const blog = allBlogs.find((blog) => blog.slug === slug);
+
+  if (!blog) {
+    return <p>Blog not found</p>;
+  }
+
   return (
     <section
-      className="cmn-banner bg-img"
-      style={{ backgroundImage: "url('/images/banner/cmn-banner-bg.png')" }}
-    >
-      <div className="container">
-        <div className="row gaper align-items-center">
-          <div className="col-12">
-            <div className="text-center text-lg-start">
-              <h2 className="title title-anim">
-                We denounce with righteous indignation
-              </h2>
-              <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link href="/">
-                      <i className="fa-solid fa-house"></i>
+      className='cmn-banner bg-img'
+      style={{ backgroundImage: "url('/images/banner/cmn-banner-bg.png')" }}>
+      <div className='container'>
+        <div className='row gaper align-items-center'>
+          <div className='col-12'>
+            <div className='text-center text-lg-start'>
+              <h2 className='title title-anim'>{blog.title}</h2>
+              <nav aria-label='breadcrumb'>
+                <ol className='breadcrumb'>
+                  <li className='breadcrumb-item'>
+                    <Link href='/'>
+                      <i className='fa-solid fa-house'></i>
                       Home
                     </Link>
                   </li>
-                  <li className="breadcrumb-item active" aria-current="page">
+                  <li className='breadcrumb-item active' aria-current='page'>
                     Blog Details
                   </li>
                 </ol>

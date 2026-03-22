@@ -1,6 +1,7 @@
+import { MDXContent } from '@content-collections/mdx/react';
 import { allBlogs } from 'content-collections';
 import Image from 'next/image';
-import Link from 'next/link';
+// import Link from 'next/link';
 // import poster from "public/images/news/poster.png";
 // import groupone from "public/images/news/group-one.png";
 // import grouptwo from "public/images/news/group-two.png";
@@ -21,6 +22,19 @@ const BlogDetailsMain = ({ slug }: { slug: string }) => {
     <section className='section blog-main blog-details fade-wrapper'>
       <div className='container'>
         <div className='row gaper'>
+          <div className='col-12'>
+            <div className='blog-details__content'>
+              <div className='bd-thumb fade-top'>
+                <Image src={blog.cover} alt='Image' width={929} height={470} />
+              </div>
+            </div>
+          </div>
+        </div>
+        <article className={'blog-article'}>
+          <MDXContent code={blog.mdx} />
+        </article>
+
+        {/* <div className='row gaper'>
           <div className='col-12 col-xl-8'>
             <div className='blog-details__content'>
               <div className='bd-thumb fade-top'>
@@ -459,7 +473,7 @@ const BlogDetailsMain = ({ slug }: { slug: string }) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

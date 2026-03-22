@@ -26,3 +26,28 @@ html {
 ._chatHeader_181xn_163 ._status_181xn_229 {
   padding: 0px !important;
 }
+
+/* .container > .blog-article > inside all hr elements should have margin-top: 2rem and margin-bottom: 2rem*/
+.container > .blog-article hr {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+  opacity: 0 !important;
+}
+
+/* .container > .blog-article > inside all ul make unstyled list as default with padding-left: 1.5rem and margin-bottom: 1rem
+*/
+.container > .blog-article ul {
+  list-style: none !important;
+  padding-left: 1.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.container > .row > .col-12 > .blog-details__content > .bd-thumb img {
+  aspect-ratio: 26/9 !important;
+}
+
+@media (max-width: 548px) {
+  .container > .row > .col-12 > .blog-details__content > .bd-thumb img {
+    aspect-ratio: 21/9 !important;
+  }
+}

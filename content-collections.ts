@@ -1,45 +1,62 @@
-import { defineCollection, defineConfig } from '@content-collections/core';
-import { compileMarkdown } from '@content-collections/markdown';
-import { z } from 'zod';
-
 import { exec as execCallback } from 'node:child_process';
 import { promisify } from 'node:util';
+
+import {
+  CollectionContext,
+  defineCollection,
+  defineConfig,
+  Schema,
+} from '@content-collections/core';
+import { compileMDX } from '@content-collections/mdx';
+import remarkGfm from 'remark-gfm';
+import { z } from 'zod';
 
 const exec = promisify(execCallback);
 
 const postSchema = z.object({
-  title: z.string().min(1, 'Title cannot be empty'),
-  summary: z.string().min(1, 'Summary cannot be empty'),
-  content: z.string().min(1, 'Content cannot be empty'),
-  slug: z
+  title: z
     .string()
-    .min(1, 'Slug cannot be empty')
-    .lowercase()
-    .regex(
-      /^[a-z0-9-]+$/,
-      'Slug can only contain lowercase letters, numbers, and hyphens',
-    ),
-  coverImage: z.string().min(1, 'Cover image URL cannot be empty'),
-  authorName: z.string().min(1, 'Author name cannot be empty'),
-  authorAvatar: z.string().min(1, 'Author avatar URL cannot be empty'),
-  tags: z
-    .array(z.string().min(1, 'Tag cannot be empty'))
-    .min(1, 'At least one tag is required'),
-  metaTitle: z
+    .min(5, 'Title must be at least 5 characters long')
+    .max(100, 'Title must be at most 100 characters long')
+    .describe('The title of the post, between 5 and 100 characters.'),
+  description: z
     .string()
-    .min(1, 'Meta title cannot be empty')
-    .max(60, 'Meta title cannot exceed 60 characters'),
-  metaDescription: z
+    .min(16, 'Description must be at least 16 characters long')
+    .max(160, 'Description must be at most 160 characters long')
+    .describe('A brief summary of the post, between 16 and 160 characters.'),
+  cover: z.string().describe('A URL pointing to the cover image for the post.'),
+  coverAlt: z.string().describe('Alternative text for the cover image.'),
+  categories: z
+    .array(z.string())
+    .describe('The categories or tags associated with the post.'),
+  author: z.string().describe('The name of the author of the post.'),
+  avatar: z
     .string()
-    .min(1, 'Meta description cannot be empty')
-    .max(160, 'Meta description cannot exceed 160 characters'),
-  socialLinks: z.array(
-    z.object({
-      platform: z.string().min(1, 'Platform name cannot be empty'),
-      url: z.url('Invalid URL format').min(1, 'URL cannot be empty'),
-    }),
-  ),
+    .describe('A URL pointing to the avatar image of the author.'),
+  featured: z
+    .boolean()
+    .describe('Whether the post is featured or not.')
+    .default(false),
+  content: z.string(),
+  draft: z
+    .boolean()
+    .describe('Whether the post is a draft or not.')
+    .default(false),
 });
+
+export type PostValues = z.infer<typeof postSchema>;
+
+export type PostDocument = Schema<'frontmatter', typeof postSchema>;
+
+export type Transformed = CollectionContext<PostValues>['collection'];
+
+function calcReadTime(document: PostDocument) {
+  const wordsPerMinute = 150; // Average reading speed
+  const text = document.content;
+  const wordCount = text.split(/\s+/).length;
+
+  return Math.ceil(wordCount / wordsPerMinute);
+}
 
 const blogs = defineCollection({
   name: 'blogs',
@@ -47,6 +64,16 @@ const blogs = defineCollection({
   include: ['**/*.md', '**/*.mdx'],
   schema: postSchema,
   transform: async (document, context) => {
+    if (document.draft) {
+      return context.skip('document is a draft');
+    }
+    // return document;
+
+    // Transform the content to a MDX component
+    const mdx = await compileMDX(context, document, {
+      remarkPlugins: [remarkGfm],
+    });
+
     const lastModified = await context.cache(
       document._meta.filePath,
       async (filePath) => {
@@ -58,12 +85,14 @@ const blogs = defineCollection({
       },
     );
 
-    const html = await compileMarkdown(context, document);
+    const readTime = calcReadTime(document);
 
     return {
       ...document,
-      html,
+      mdx,
       lastModified,
+      slug: document.title.toLowerCase().replace(/ /g, '-'),
+      readTime,
     };
   },
 });

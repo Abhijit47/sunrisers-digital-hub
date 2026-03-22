@@ -5,7 +5,7 @@ import BlogSingleBanner from '@/components/layout/banner/BlogSingleBanner';
 const BlogSingle = () => {
   return (
     <Layout header={2} footer={5} video={0}>
-      <BlogSingleBanner />
+      <BlogSingleBanner slug='123' />
       {/* <BlogDetailsMain /> */}
     </Layout>
   );
