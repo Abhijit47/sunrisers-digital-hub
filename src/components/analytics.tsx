@@ -6,9 +6,11 @@ import {
   sendGAEvent,
 } from '@next/third-parties/google';
 import { addScript, setup } from 'meta-pixel';
+import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 
 export function setupMetaPixel() {
+  if (typeof window === 'undefined') return;
   const fbq = addScript(
     window,
     document,
@@ -22,7 +24,7 @@ export function setupMetaPixel() {
 
 const isDev = process.env.NODE_ENV === 'development';
 
-export default function Analytics() {
+function Analytics() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     sendGAEvent({
@@ -38,7 +40,7 @@ export default function Analytics() {
     const fbq = setupMetaPixel();
 
     return () => {
-      fbq('track', 'PageView');
+      fbq?.('track', 'PageView');
     };
   }, []);
 
@@ -64,3 +66,7 @@ export default function Analytics() {
     </>
   );
 }
+
+export const LazyAnalytics = dynamic(() => Promise.resolve(Analytics), {
+  ssr: false,
+});

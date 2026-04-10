@@ -35,7 +35,7 @@ export default function ContactForm() {
 
       if (data.success) {
         setResult('Form Submitted Successfully');
-        fbq('track', 'Contact');
+        fbq?.('track', 'Contact');
         event.target.reset();
         setTimeout(() => {
           setResult('');

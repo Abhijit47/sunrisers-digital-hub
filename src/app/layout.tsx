@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // main scss
 import '@/styles/main.scss';
 
-import Analytics from '@/components/analytics';
+import { LazyAnalytics } from '@/components/analytics';
 import Layout from '@/components/layout/Layout';
 import { LazyWhatsappButton } from '@/components/whatsapp-button';
 import './globals.css';
@@ -118,7 +118,7 @@ export default function RootLayout({
         <Layout header={2} footer={2} video={false}>
           {children}
         </Layout>
-        <Analytics />
+        <LazyAnalytics />
         <LazyWhatsappButton />
       </body>
     </html>
